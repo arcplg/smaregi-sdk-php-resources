@@ -1,0 +1,33 @@
+{
+    "name": "arcplg/smaregi",
+    "description": "A Laravel Package for Smaregi Platform API",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Arcplg\\Smaregi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "iamrabineupane",
+            "email": "rabineupane.com.np@gmail.com"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "Arcplg\\Smaregi\\Tests\\": "tests/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "orchestra/testbench": "^8.10.0",
+        "mockery/mockery": "^1.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Arcplg\\Smaregi\\SmaRegiBaseServiceProvider"
+            ]
+        }
+    }
+}
