@@ -140,5 +140,7 @@ return [
         'stocks' => '/pos/stock/',
         'transactions' => '/pos/transactions/',
         'products' => '/pos/products/',
+        'adjustments' => '/pos/adjustments/',
+        'daily_summaries' => '/pos/daily_summaries/'
     ],
 ];
