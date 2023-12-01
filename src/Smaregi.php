@@ -10,11 +10,11 @@ use Arcplg\Smaregi\Features\Transactions;
 use Arcplg\Smaregi\Features\Adjustments;
 use Arcplg\Smaregi\Features\Authorization;
 use Arcplg\Smaregi\Features\DailySummaries;
-
+use Arcplg\Smaregi\Features\Terminals;
 
 class Smaregi
 {
-    use ApiCall, Authorization, Shops, Products, Stocks, Transactions, Adjustments, DailySummaries;
+    use ApiCall, Authorization, Shops, Products, Stocks, Transactions, Adjustments, DailySummaries, Terminals;
 
     /**
      * @var mixed

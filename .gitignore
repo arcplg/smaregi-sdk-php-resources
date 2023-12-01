@@ -1,3 +1,5 @@
 vendor
 config/data.php
+config/data_bk.php
+config/smaregi_bk.php
 tests
