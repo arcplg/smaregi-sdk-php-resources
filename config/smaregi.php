@@ -136,6 +136,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'smaregi_api_list' => [
+        'temporaries' => '/pos/transactions/temporaries',
         'shops' => '/pos/stores/',
         'stocks' => '/pos/stock/',
         'transactions' => '/pos/transactions/',
