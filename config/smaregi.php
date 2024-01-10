@@ -10,6 +10,20 @@ return [
     'smaregi_contract_id' => env('SMAREGI_CONTRACT_ID', 'AAAAAAA'),
     /*
     |--------------------------------------------------------------------------
+    |  smaregi app client id and paste here
+    |--------------------------------------------------------------------------
+    */
+    'smaregi_app_client_id' => env('SMAREGI_APP_CLIENT_ID', 'BBBBBBBB'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | smaregi  app client secret
+    |--------------------------------------------------------------------------
+    */
+    'smaregi_app_client_secret' => env('SMAREGI_APP_CLIENT_SECRET', 'CCCCCCCCCCC'),
+
+    /*
+    |--------------------------------------------------------------------------
     | smaregi  access
     |--------------------------------------------------------------------------
     */
@@ -44,20 +58,6 @@ return [
         'order-shipment.stock:read'
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    |  smaregi app client id and paste here
-    |--------------------------------------------------------------------------
-    */
-
-    'smaregi_app_client_id' => env('SMAREGI_APP_CLIENT_ID', 'BBBBBBBB'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | smaregi  app client secret
-    |--------------------------------------------------------------------------
-    */
-    'smaregi_app_client_secret' => env('SMAREGI_APP_CLIENT_SECRET', 'CCCCCCCCCCC'),
 
 
     /*
@@ -140,5 +140,8 @@ return [
         'stocks' => '/pos/stock/',
         'transactions' => '/pos/transactions/',
         'products' => '/pos/products/',
+        'adjustments' => '/pos/adjustments/',
+        'daily_summaries' => '/pos/daily_summaries/',
+        'terminals' => '/pos/terminals/',
     ],
 ];

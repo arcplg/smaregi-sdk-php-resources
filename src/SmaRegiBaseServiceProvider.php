@@ -34,10 +34,6 @@ class SmaRegiBaseServiceProvider extends ServiceProvider
             __DIR__ . '/../config/smaregi.php',
             'smaregi'
         );
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/data.php',
-            'tdata'
-        );
     }
 
     /**
