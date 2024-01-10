@@ -50,7 +50,15 @@ return $smaregi->deleteShop($id);
 
 ## Testing
  SDKのphp UNITテスト行いたい場合は
- このgitをcloneしてcomposer install してくださいその後下記のコマンド実行
+
+このgitをcloneしてください
+
+ ``` feature/test```ブランチに切り替えてくだださい
+
+```composer install``` してください
+ 
+ その後下記のコマンド実行
+
  ```
  composer global require phpunit/phpunit
  ```
