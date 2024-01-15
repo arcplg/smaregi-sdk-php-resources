@@ -25,8 +25,6 @@ trait DailySummaries
         if ($status_code == 200) {
             return $response;
         } else {
-            echo "daily error!!!";
-            print_r($responseData);
             return $response;
         }
     }

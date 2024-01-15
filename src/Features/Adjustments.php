@@ -25,8 +25,6 @@ trait Adjustments
         if ($status_code == 200) {
             return $response;
         } else {
-            echo "adjust error!!!";
-            print_r($responseData);
             return $response;
         }
     }
