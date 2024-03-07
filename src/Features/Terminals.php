@@ -25,8 +25,6 @@ trait Terminals
         if ($status_code == 200) {
             return $response;
         } else {
-            echo "terminals Errors !!";
-            print_r($responseData);
             return $response;
         }
     }

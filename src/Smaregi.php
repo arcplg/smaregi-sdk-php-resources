@@ -6,6 +6,7 @@ use Arcplg\Smaregi\Features\Shops;
 use Arcplg\Smaregi\Features\Stocks;
 use Arcplg\Smaregi\Features\ApiCall;
 use Arcplg\Smaregi\Features\Products;
+use Arcplg\Smaregi\Features\Temporaries;
 use Arcplg\Smaregi\Features\Transactions;
 use Arcplg\Smaregi\Features\Adjustments;
 use Arcplg\Smaregi\Features\Authorization;
@@ -14,7 +15,7 @@ use Arcplg\Smaregi\Features\Terminals;
 
 class Smaregi
 {
-    use ApiCall, Authorization, Shops, Products, Stocks, Transactions, Adjustments, DailySummaries, Terminals;
+    use ApiCall, Authorization, Shops, Products, Stocks, Transactions, Adjustments, DailySummaries, Terminals, Temporaries;
 
     /**
      * @var mixed
