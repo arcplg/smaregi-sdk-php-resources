@@ -1,8 +1,29 @@
-vendor
-# config/data.php
-# tests
-# config/data.php
+# project
 config/data_bk.php
 config/smaregi_bk.php
 config/smaregi_test.php
+
+/vendor/
+/node_modules/
+
+# Environment files
+.env
+.env*
+
+# IDE/Editor folders
+.idea/
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# PHPUnit test cache
+.phpunit.result.cache
 .phpunit.cache
+
+# Laravel specific
+/public/hot
+/public/storage
+/storage/*.key
+/bootstrap/cache/

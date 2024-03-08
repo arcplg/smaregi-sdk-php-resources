@@ -144,5 +144,6 @@ return [
         'adjustments' => '/pos/adjustments/',
         'daily_summaries' => '/pos/daily_summaries/',
         'terminals' => '/pos/terminals/',
+        'categories' => '/pos/categories/',
     ],
 ];

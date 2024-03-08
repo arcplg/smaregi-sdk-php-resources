@@ -1,5 +1,5 @@
-# スマレージのSDKインストルー方法
-プロジェクトのcomposer.jsonファイルのrepositoryに下記のもの貼り付けます
+# スマレジのSDKのインストール方法
+プロジェクトのcomposer.jsonファイルのrepositoryに以下の内容を追加します。
 
 ```
     {
@@ -8,16 +8,22 @@
     }
 
 ```
-そのご下記のコマンド実行する
+
+次に以下のコマンドを実行します。
+
 ```
  composer require arcplg/smaregi:dev-master 
  ```
 
-その後vendor publishするため下記のコマンド実行
+その後vendor publishするために以下のコマンドを実行します。
+
 ```
  php artisan vendor:publish --tag=arcplg-smaregi-config 
  ```
-その実行後はプロジェクトの```config```ディレクトリの中```smaregi.php```ファイルができます　Smaregiのデベロッパアカウントから必要な項目コピーしてもらって貼り付けます
+
+このコマンドを実行すると、プロジェクトの```config```ディレクトリに```smaregi.php```ファイルが生成されます。  
+Smaregiの開発者アカウントから必要な項目をコピーし、以下のように貼り付けます。
+
 ```
  'smaregi_contract_id' => env('SMAREGI_CONTRACT_ID', 'AAAAAAA'),
  'smaregi_app_client_id' => env('SMAREGI_APP_CLIENT_ID', 'BBBBBBBB'),
@@ -26,17 +32,32 @@
 ```
 ```AAAAAAA```,```BBBBBBBB```,```CCCCCCCCCCC```に自分のデベロッパアカウント情報を貼り付けます
 
+または.envが有効な場合は環境変数を追加してもOKです。
+
+```
+SMAREGI_CONTRACT_ID=AAAAAAA
+SMAREGI_APP_CLIENT_ID=BBBBBBBB
+SMAREGI_APP_CLIENT_SECRET=CCCCCCCCCCC
+SMAREGI_UPDATE_BULK_PRODUCTS_CALLBACK_URL=https://your.api.callback.com/
+```
+
+
+
 ## 使い方
-ControllerにSmaregi PackageをUse
+ControllerでSmaregiパッケージを使用します。
+
 ```
 use Arcplg\Smaregi\Smaregi;
 ```
+
 #### 関数呼び出し
+
 ```
 $smaregi = new Smaregi();
 return $smaregi->deleteShop($id);
 ```
-#### Valuesあり関数
+
+#### 値を持つ関数
 ```
  $values = [
         'categoryId' => 8000001,
@@ -48,25 +69,17 @@ return $smaregi->deleteShop($id);
     $smaregi->createProduct($values);
 ```
 
-## Testing
- SDKのphp UNITテスト行いたい場合は
 
-このgitをcloneしてください
+# テスト
 
- ``` feature/test```ブランチに切り替えてくだださい
-
-```composer install``` してください
- 
- その後下記のコマンド実行
-
- ```
- composer global require phpunit/phpunit
- ```
 ```test/Feature```全てテストしたい場合は　下記のコマンド実行してください
+
 ```
 phpunit
 ```
+
 定義した関数だけテストしたい場合は下記のコマンド実行してください
+
 ```
 phpunit --filter testAuthorizationTokenType
 ```
@@ -80,64 +93,67 @@ phpunit --filter testAuthorizationTokenType
     4. 更新
     5. 一括作成
     6. 一括更新
-2. 店舗
+2. 部門
     1. 一覧
     2. 作成
     3. 削除
     4. 更新
-    6. 店舗詳細
-3. 在庫
+    5. 登録または更新
+3. 店舗
     1. 一覧
+    2. 作成
+    3. 削除
     4. 更新
-    6. 一括更新
-4. 取引
+    5. 店舗詳細
+4. 在庫
+    1. 一覧
+    2. 更新
+    3. 一括更新
+5. 取引
     1. 一覧
     2. 詳細
     3. 取消
     4. 更新
     5. 作成
-5. レジ端末
+6. レジ端末
     1. 一覧
-6. 日次締め情報
+7. 日次締め情報
     1. 一覧
 
-# SDKのフォルダい一覧
+# SDKのフォルダ構成
 
 1. config
 2. src
 
 ### 1. config
 
-1. config
+configフォルダには`smaregi.php`という設定ファイルが含まれています。このファイルには各種設定を記述します。  
+他のプロジェクトで`composer install`を実行し、その後`php artisan vendor publish`を実行すると、このファイルはLaravelのconfigフォルダに自動的にコピーされます。
 
-configフォルダの中身は`smaregi.php`　ファイルがありますそちらには設定を書きます他のプロジェクトで`composer` で`install`したて　`php artisan vendor publish` したときlaravel
-
-中のconfigフォルーだに自動的に入るファイルです.
-
-smaregi.phpファイルの中の一番下にあるkey　`smaregi_api_list`　は現在SDKで対応されていAPIリストです
+`smaregi.php`ファイルの最後にある`smaregi_api_list`キーは、現在SDKが対応しているAPIのリストを示しています。
 
 ### 2. src
 
-srcは実際のコードあるフォルダですsrcの中の`SmaRegiBaseServiceProvider.php` は設定かくところですvendor publishしたときconfigファイルをどこに置きますなどのせていかくファイルです.
+srcフォルダには実際のコードが格納されています。`SmaRegiBaseServiceProvider.php`は設定を記述する場所で、`vendor publish`を実行したときにconfigファイルをどこに配置するかなどを設定します。
 
-`Smaregi.php` ファイルはGlobal関数書いているファイルですこれはSDKのエントリー(メイン)ファイルです。
-
+`Smaregi.php`ファイルはグローバル関数を記述しているファイルで、SDKのエントリーポイント（メインファイル）です。
 
 ### src/Features 
 
-`Features`はかくAPIのロジック書いているフォルダです。
+`Features`フォルダには各APIのロジックが記述されています。
 
-Featuresの中に新しい機能などの追加あったら```Smaregi.php```にそのファイルをUseする必要あります
+Featuresフォルダに新しい機能を追加した場合、`Smaregi.php`ファイルでそのファイルをuseする必要があります。
+
 #### 例
 
-```Features/products.php```の場合は下記のように書く必要あります
+`Features/products.php`を追加した場合、以下のように記述します。
 
-```use Arcplg\Smaregi\Features\Products;```
+```php
+use Arcplg\Smaregi\Features\Products;
+use Products;
+```
 
-```use Products;```
-
-
-`Features/ApiCall.php` はかくAPIから```Smaregi```までcallするファイルです
+Features/ApiCall.phpは各APIからSmaregiまでの呼び出しを行うファイルです。
 
 ### 例
 
@@ -169,13 +185,10 @@ Featuresの中に新しい機能などの追加あったら```Smaregi.php```に�
     }
 ```
 
-上の関数は店舗の一覧取る関数です
-
-`$data`には`config`ファイルの設定項目と`querries`などを入ってある変数です
-
-`$this->apiCall($data);` これはApiCall.phpの関数を呼ぶだしています。
-
-上の関数にはQuerryなしのものです下記の場合はQuerryある例です
+上記の関数は店舗の一覧を取得する関数です。
+`$data`は`config`ファイルの設定項目や`queries`などが格納された変数です。
+`$this->apiCall($data);` はApiCall.phpの関数を呼び出しています。
+上記の関数はクエリがない場合のものです。以下にクエリがある場合の例を示します。
 
 ### 例
 
@@ -217,15 +230,15 @@ public function login($where = null)
     }
 ```
 
-querriesある場合はquerry parameterにする必要ありますのでapiCall関数に下記のぎょう追加してあります
+クエリがある場合は、クエリパラメータにする必要があります。そのため、apiCall関数に以下の行を追加しています。
 
 `CURLOPT_POSTFIELDS => $data['datas'] ?? http_build_query($data['queries']),`
 
-作成とか編集の場合はquerryいらないですがValuesが必要ですその場合は
+作成や編集の場合はクエリは不要ですが、Valuesが必要となります。その場合は、
 
-`querries`を空の配列にして`datas`に`values`を設定します
+`queries`を空の配列にし、`datas`に`values`を設定します。
 
-`Smaregi`では`Values`はいつも`json`にする必要ありますので`json_encode`して`datas`に`values`を設定します。
+`Smaregi`では`Values`は常に`json`形式である必要があります。そのため、`json_encode`を使用して`values`を`datas`に設定します。
 
 ### 例
 
