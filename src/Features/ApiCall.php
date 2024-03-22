@@ -15,6 +15,10 @@ trait ApiCall
     {
 
         $curl = curl_init();
+        if ($data['method'] === 'GET' && isset($data['queries'])) {
+            $separator = (parse_url($data['smaregiCallUri'], PHP_URL_QUERY) == NULL) ? '?' : '&';
+            $data['smaregiCallUri'] .= $separator . http_build_query($data['queries']);
+        }
         curl_setopt_array(
             $curl,
             array(

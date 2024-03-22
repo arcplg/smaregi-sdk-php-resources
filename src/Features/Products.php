@@ -12,12 +12,12 @@ trait Products
      * 製品一覧
      * @return mixed
      */
-    public function getProductsList()
+    public function getProductsList($query=[])
     {
 
         $data = [
             'smaregiCallUri' => config('smaregi.smaregi_base_api_url') . config('smaregi.smaregi_contract_id') . config('smaregi.smaregi_api_list')['products'],
-            'queries' => [],
+            'queries' => $query,
             'method' => config('smaregi.smaregi_method_get'),
             'header' => array(
                 'Authorization:' . config('smaregi.smaregi_auth_token_type') . $this->getSmaregiAccessToken()

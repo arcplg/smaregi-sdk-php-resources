@@ -14,6 +14,7 @@ class CategoryTest extends TestCase
     public function testgetCategories()
     {
         $smaregi = new Smaregi();
+        $loginDetails = $smaregi->login();
         $categoryList = $smaregi->getCategories();
         // print_r($categoryList);
         return $this->assertIsArray($categoryList);

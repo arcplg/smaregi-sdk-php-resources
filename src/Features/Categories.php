@@ -176,7 +176,7 @@ trait Categories
         // print_r("***********");
         // print_r($values['categoryCode']);
         $category = $this->getCategoriesByCategoryCode($values['categoryCode']);
-        print_r($category);
+        // print_r($category);
         if ($category) {
             return $this->updateCategory($category->categoryId, $values);
         } else {

@@ -115,5 +115,18 @@ class ProductTest extends TestCase
 
 
     }
+    /**
+     * testGetProductsListByQuery
+     *
+     * @return mixed
+     */
     // product required field test case start from here @todo
+    public function testGetProductsListByQuery()
+    {
+        $smaregi = new Smaregi();
+        $query = ['product_code' => '360121'];
+        $productList = $smaregi->getProductsList($query);
+        print_r($productList);
+        return $this->assertEquals('360121', $productList[0]->productCode);
+    }
 }

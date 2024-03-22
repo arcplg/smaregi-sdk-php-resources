@@ -75,6 +75,9 @@ class Smaregi
     {
         $clientId = config('smaregi.smaregi_app_client_id');
         $clientSecret = config('smaregi.smaregi_app_client_secret');
+        // print_r("***************");
+        // print_r($clientId);
+        // print_r($clientSecret);
         $merged = "$clientId:$clientSecret";
         return base64_encode($merged);
     }
