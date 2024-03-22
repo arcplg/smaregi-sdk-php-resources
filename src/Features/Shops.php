@@ -10,11 +10,11 @@ trait Shops
      * 店舗一覧
      * @return mixed
      */
-    public function getShops()
+    public function getShops($query = [])
     {
         $data = [
             'smaregiCallUri' => config('smaregi.smaregi_base_api_url') . config('smaregi.smaregi_contract_id') . config('smaregi.smaregi_api_list')['shops'],
-            'queries' => [],
+            'queries' => $query,
             'method' => config('smaregi.smaregi_method_get'),
             'header' => array(
                 'Authorization:' . config('smaregi.smaregi_auth_token_type') . $this->getSmaregiAccessToken()
@@ -37,7 +37,7 @@ trait Shops
     public function createShop($values)
     {
         $data = [
-            'smaregiCallUri' => config('smaregi.smaregi_base_api_url') . config('smaregi.smaregi_contract_id') . config('smaregi.smaregi_api_list')['products'],
+            'smaregiCallUri' => config('smaregi.smaregi_base_api_url') . config('smaregi.smaregi_contract_id') . config('smaregi.smaregi_api_list')['shops'],
             'queries' => [],
             'datas' => json_encode($values),
             'method' => config('smaregi.smaregi_method_post'),
@@ -136,4 +136,26 @@ trait Shops
             return $response;
         }
     }
+
+    /**
+     *  店舗登録または更新
+     * @param mixed $id
+     * 
+     * @return mixed
+     */
+
+     public function createOrUpdateShop($value)
+     {
+        
+        $query = ['store_code' => $value['storeCode']];
+        $shopList = $this->getShops($query);
+        print_r($shopList);
+
+        if ($shopList) {
+            return $this->updateShop($shopList[0]->storeId, $value);
+        } else {
+            return $this->createShop($value);
+        }
+     }
+
 }
