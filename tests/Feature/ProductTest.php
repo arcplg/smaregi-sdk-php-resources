@@ -129,4 +129,22 @@ class ProductTest extends TestCase
         print_r($productList);
         return $this->assertEquals('360121', $productList[0]->productCode);
     }
+
+    // createOrUpdateCategoryをテストする
+    /** @test 
+     * @return mixed
+     */
+    public function testcreateOrUpdateProduct() {
+        $smaregi = new Smaregi();
+        $value = ["categoryCode" => "01", "productName" => "ソファ", "productCode" => "999500"];
+        $value['price'] = 1;
+        $value['productPriceDivision'] = '2';
+        $value['pointNotApplicable'] = '1';
+        $value['taxDivision'] = '0';
+        $value['calcDiscount'] = '0';
+
+        $create = $smaregi->createOrUpdateProduct($value);
+        print_r($create);
+        return $this->assertEquals(200, $create['status_code']);
+    }
 }

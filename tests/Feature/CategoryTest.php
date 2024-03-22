@@ -43,7 +43,7 @@ class CategoryTest extends TestCase
             "tag" => "リビング,家具"
         ];
         $create = $smaregi->createOrUpdateCategory($values);
-        print_r($create);
+        // print_r($create);
         return $this->assertEquals(200, $create['status_code']);
     }
 }

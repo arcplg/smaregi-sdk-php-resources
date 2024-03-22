@@ -178,4 +178,27 @@ trait Products
             return $response;
         }
     }
+
+    /**
+     *  製品登録または更新
+     * @param mixed $id
+     * 
+     * @return mixed
+     */
+
+    public function createOrUpdateProduct($value)
+    {
+        $category = $this->getCategoriesByCategoryCode($value['categoryCode']);
+        $value['categoryId'] = $category->categoryId;
+        unset($value['categoryCode']);
+
+        $query = ['product_code' => $value['productCode']];
+        $productList = $this->getProductsList($query);
+
+        if ($productList) {
+            return $this->updateProduct($productList[0]->productId, $value);
+        } else {
+            return $this->createProduct($value);
+        }
+    }
 }
