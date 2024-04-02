@@ -17,6 +17,15 @@ class SimpleTest extends TestCase
         return $this->assertEquals(config('smaregi.smaregi_access')[0]  . ' ' . config('smaregi.smaregi_access')[1], $smaregi->login());
     }
 
+    public function testgetTransaction()
+    {
+        $smaregi = new Smaregi();
+        $loginDetails = $smaregi->login();
+        $transactionList = $smaregi->getTransaction(642, ["with_deposit_others" => "all"]);
+        print_r($transactionList);
+        return $this->assertIsArray($transactionList);
+    }
+
     // /**
     //  * @test
     //  */

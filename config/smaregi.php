@@ -145,5 +145,7 @@ return [
         'daily_summaries' => '/pos/daily_summaries/',
         'terminals' => '/pos/terminals/',
         'categories' => '/pos/categories/',
+        'payment_methods' => '/pos/payment_methods/',
+        'payment_method_groups' => '/pos/payment_method_groups/',
     ],
 ];

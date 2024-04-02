@@ -13,10 +13,12 @@ use Arcplg\Smaregi\Features\Authorization;
 use Arcplg\Smaregi\Features\DailySummaries;
 use Arcplg\Smaregi\Features\Terminals;
 use Arcplg\Smaregi\Features\Categories;
+use Arcplg\Smaregi\Features\PaymentMethods;
+use Arcplg\Smaregi\Features\PaymentMethodGroups;
 
 class Smaregi
 {
-    use ApiCall, Authorization, Shops, Products, Stocks, Transactions, Adjustments, DailySummaries, Terminals, Temporaries, Categories;
+    use ApiCall, Authorization, Shops, Products, Stocks, Transactions, Adjustments, DailySummaries, Terminals, Temporaries, Categories, PaymentMethods, PaymentMethodGroups;
 
     /**
      * @var mixed
