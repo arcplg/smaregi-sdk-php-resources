@@ -30,4 +30,30 @@ trait Temporaries
             return $response;
         }
     }
+
+    /**
+     * 仮販売削除
+     * @return mixed
+     */
+    public function deleteTemporaryTransaction($id)
+    {
+        $data = [
+
+            'smaregiCallUri' => config('smaregi.smaregi_base_api_url') . config('smaregi.smaregi_contract_id') . config('smaregi.smaregi_api_list')['temporaries'] . '/' . $id,
+            'queries' => [],
+            'method' => config('smaregi.smaregi_method_delete'),
+            'header' => array(
+                'Content-Type: application/json',
+                'Authorization:' . config('smaregi.smaregi_auth_token_type') . $this->getSmaregiAccessToken()
+            )
+        ];
+        $responseData = $this->apiCall($data);
+        $status_code = $responseData['status_code'] ?? null;
+        $response = $responseData;
+        if ($status_code == 200) {
+            return $response;
+        } else {
+            return $response;
+        }
+    }
 }

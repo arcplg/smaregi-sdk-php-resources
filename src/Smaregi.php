@@ -18,7 +18,19 @@ use Arcplg\Smaregi\Features\PaymentMethodGroups;
 
 class Smaregi
 {
-    use ApiCall, Authorization, Shops, Products, Stocks, Transactions, Adjustments, DailySummaries, Terminals, Temporaries, Categories, PaymentMethods, PaymentMethodGroups;
+    use ApiCall,
+        Authorization,
+        Shops,
+        Products,
+        Stocks,
+        Transactions,
+        Adjustments,
+        DailySummaries,
+        Terminals,
+        Temporaries,
+        Categories,
+        PaymentMethods,
+        PaymentMethodGroups;
 
     /**
      * @var mixed
